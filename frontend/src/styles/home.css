@@ -1,0 +1,229 @@
+/* 홈 화면 — 카테고리 · 좌우 배치 · 인기 키워드 · 안내 줄 */
+
+
+/* --- 카테고리 아이콘 줄 --- */
+/* 좁으면 옆으로 밀어서 봄 */
+.catbar {
+  display: flex;
+  gap: 4px;
+  margin: 14px 16px 0;
+  padding: 14px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow-x: auto;
+}
+.catbar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  min-width: 68px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.catbar__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--green);
+  background: var(--green-soft);
+  border-radius: 999px;
+}
+.catbar__name {
+  font-size: 11.5px;
+  color: var(--gray2);
+  white-space: nowrap;
+}
+/* 고른 것만 색이 진해짐 */
+.catbar__item--on .catbar__circle {
+  color: #fff;
+  background: var(--green);
+}
+.catbar__item--on .catbar__name {
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
+
+/* --- 홈 배치 --- */
+/* 폰에서는 세로로 쌓되, 인기 키워드가 목록보다 위로 오게 함.
+   목록이 100개가 넘어서 아래에 두면 끝까지 스크롤해야 보이기 때문 */
+.home {
+  display: flex;
+  flex-direction: column;
+}
+.home__main { min-width: 0; }
+.home__side {
+  order: -1;            /* 목록보다 앞으로 */
+  padding: 0 16px;
+}
+
+
+/* --- 구역 제목 --- */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding: 14px 16px 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+.sec-count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray3);
+}
+
+
+/* --- 인기 키워드 패널 --- */
+.rank {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--orange-soft);
+  border-radius: 14px;
+  min-width: 0;          /* 태그가 길어도 칸을 밀어내지 않게 */
+  overflow: hidden;
+}
+.rank__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #B24800;
+}
+.rank__head svg { color: var(--orange); flex-shrink: 0; }
+.rank__sub {
+  margin: 5px 0 12px;
+  font-size: 11.5px;
+  color: var(--gray3);
+}
+
+.rank__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+/* 태그 하나. 누르면 그 말로 검색됨 */
+.rank__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  color: var(--gray2);
+  background: #fff;
+  border: 1px solid #F2DFCC;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.rank__tag:hover { border-color: var(--orange); color: var(--orange); }
+
+/* 오르내림 표시 */
+.rank__up, .rank__down, .rank__new {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-style: normal;
+}
+.rank__up   { color: #D64545; }   /* 상승은 빨강 */
+.rank__down { color: #3B7DD8; }   /* 하락은 파랑 */
+.rank__new  { color: var(--orange); }
+
+
+/* --- 맨 아래 안내 줄 --- */
+.feat {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 28px 16px 0;
+  padding: 22px 18px;
+  background: #FBFAF7;
+  border-radius: 14px;
+}
+.feat__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.feat__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  color: var(--green);
+  background: var(--green-soft);
+  border-radius: 999px;
+}
+.feat__title {
+  margin: 0 0 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+.feat__line {
+  margin: 0;
+  font-size: 12px;
+  color: var(--gray3);
+  line-height: 1.5;
+}
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   =============================================================== */
+@media (min-width: 768px) {
+
+  .catbar {
+    margin: 18px 24px 0;
+    padding: 18px 14px;
+    justify-content: space-between;
+  }
+  .catbar__item { min-width: 78px; }
+
+  /* 넓은 화면에서는 왼쪽 목록 · 오른쪽 인기 키워드 */
+  .home {
+    display: grid;
+    /* 두 칸 모두 minmax(0, ...) — 안 그러면 안쪽 내용이 칸보다 넓어질 때
+       칸이 늘어나면서 화면 밖으로 삐져나감 */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 260px);
+    gap: 24px;
+    padding: 0 24px;
+    align-items: start;
+  }
+  /* 자리를 줄·칸까지 못박음.
+     폰에서 준 order:-1 때문에 패널이 먼저 놓이면, 목록이 둘째 줄로
+     밀려나 위쪽에 큰 빈 자리가 생김. grid-row 를 둘 다 1로 고정해서 막음 */
+  .home__main { grid-column: 1; grid-row: 1; order: 0; }
+  .home__side { grid-column: 2; grid-row: 1; order: 0; }
+  /* 안쪽 요소들이 이미 좌우 여백을 갖고 있어서 여기선 뺌 */
+  .home__main .sec-head,
+  .home__main .grid,
+  .home__main .similar-head { padding-left: 0; padding-right: 0; }
+  .home__side { padding: 0; }
+  /* 왼쪽 목록의 "추천 상품" 제목과 같은 높이에서 시작하게 맞춤.
+     안 맞추면 목록 위쪽에 빈 자리가 크게 생김 */
+  .rank { margin-top: 14px; position: sticky; top: 20px; }
+
+  .feat {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 36px 24px 0;
+    padding: 26px 22px;
+  }
+}
+
+/* 인기 키워드 앞의 순위 숫자 */
+.rank__no {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray3);
+  min-width: 9px;
+}
+.rank__no--top { color: var(--orange); }   /* 1~3위만 눈에 띄게 */

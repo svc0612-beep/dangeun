@@ -1,0 +1,40 @@
+# ===== 비밀키·환경설정 (절대 올리면 안 됨!) =====
+.env
+.env.local
+backend/.env
+# 템플릿(.env.example)은 올림 — 아래 한 줄이 예외 처리
+!.env.example
+!backend/.env.example
+
+# ===== 데이터베이스 (실데이터 · 용량 큼) =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== 업로드된 사용자 이미지 (폴더 구조만 유지) =====
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ===== Python (백엔드) =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ===== Node / 프론트엔드 =====
+node_modules/
+dist/
+.vite/
+
+# ===== 발표·산출물 (코드 아님 — 넣고 싶으면 이 두 줄 삭제) =====
+*.pptx
+*.pdf
+
+# ===== OS / 에디터 =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

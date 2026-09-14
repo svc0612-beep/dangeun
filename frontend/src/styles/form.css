@@ -1,0 +1,221 @@
+/* 입력 폼 — 로그인 · 회원가입 · 매물 등록/수정 */
+
+
+/* --- 폼 (로그인 / 회원가입 / 찾기 / 등록 / 수정) --- */
+.logo     { margin: 40px 0 4px; font-size: 34px; font-weight: 800; color: var(--green); text-align: center; }
+.logo-sub { margin: 0 0 32px; font-size: 13px; color: var(--gray3); text-align: center; }
+
+.form-title { margin: 16px 0 20px; font-size: 20px; }
+.guide      { margin: 0 0 20px; font-size: 13px; color: var(--gray3); line-height: 1.6; }
+.back-btn   { font-size: 14px; cursor: pointer; }
+
+.field { margin-bottom: 14px; }
+.label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--gray2); }
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+}
+.input:focus { border-color: var(--green); }
+/* 자동완성 시 브라우저가 칠하는 연파랑 배경 지우기 */
+.input:-webkit-autofill,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: var(--gray1);
+}
+.input:disabled { background: #F7F7F7; color: var(--gray3); }
+
+/* 설명 입력칸. 안 넣으면 textarea만 폰트가 달라짐 */
+.textarea {
+  resize: vertical;        /* 세로로만 크기 조절 */
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* 등록·수정 화면의 새 사진 미리보기 */
+.preview-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  overflow-x: auto;        /* 사진이 많으면 옆으로 스크롤 */
+}
+.preview-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* 수정 화면의 기존 사진 목록 */
+.img-edit-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+.img-edit-item {
+  position: relative;
+  flex-shrink: 0;
+}
+.img-edit-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+/* 삭제 예정 사진은 흐리게 */
+.img-edit-item--off img { opacity: 0.3; }
+
+.img-del-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  font-size: 13px;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.input-row { display: flex; gap: 8px; }
+.input-row .input { flex: 1; }
+
+.btn-small {
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--gray2);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-small:disabled { opacity: 0.5; cursor: default; }
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--green-dark); }
+.btn-primary:disabled { opacity: 0.6; cursor: default; }
+
+.link-row { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+.link     { font-size: 13px; color: var(--gray2); cursor: pointer; }
+.divider  { font-size: 12px; color: var(--line); }
+
+.msg-error { margin: 6px 0; font-size: 13px; color: #D33; }
+.msg-ok    { margin: 6px 0; font-size: 13px; color: #2A8; }
+
+.result-box   { padding: 16px; margin-bottom: 16px; background: #FFF7F0; border-radius: 8px; text-align: center; }
+.result-label { margin: 0 0 6px; font-size: 12px; color: var(--gray3); }
+.result-value { margin: 0; font-size: 22px; font-weight: 700; color: var(--orange); letter-spacing: 2px; }
+
+.notice { padding: 40px; text-align: center; font-size: 14px; color: var(--gray2); }
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   CSS는 나중에 나온 규칙이 이기므로 이 블록은 파일 맨 끝에 있어야 함
+   =============================================================== */
+@media (min-width: 768px) {
+
+
+  /* 로그인·회원가입·등록·수정은 넓은 화면에서 카드처럼 가운데 띄움 */
+  .page--auth {
+    max-width: 480px;
+    min-height: auto;          /* 100vh를 풀어야 카드 높이가 내용에 맞춰짐 */
+    margin: 60px auto;
+    padding: 40px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+}
+
+/* --- 사진을 보고 짐작한 카테고리 --- */
+.guess-line {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--gray3);
+}
+.guess-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.guess-label {
+  font-size: 12px;
+  color: var(--gray3);
+}
+/* 누르면 카테고리 칸에 들어감 */
+.guess-chip {
+  padding: 5px 11px;
+  font-size: 12.5px;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.guess-chip:hover { background: #DCF0E5; }
+
+/* --- 라벨과 버튼을 한 줄에 --- */
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.label-row .label { margin-bottom: 0; }
+
+/* 사진 보고 써주기 버튼 */
+.btn-ai {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-ai:hover:not(:disabled) { background: #DCF0E5; }
+.btn-ai:disabled {
+  color: var(--gray3);
+  background: #F4F4F5;
+  border-color: var(--line);
+  cursor: default;
+}
+
+/* --- 거래 원칙 안내 --- */
+.rule-note {
+  margin: 4px 0 16px;
+  padding: 11px 13px;
+  font-size: 12px;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  border-radius: 9px;
+  line-height: 1.6;
+}
+.rule-note b { font-weight: 700; }

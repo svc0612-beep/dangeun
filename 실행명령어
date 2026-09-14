@@ -1,0 +1,28 @@
+
+
+# 백엔드
+cd C:\danggeun\backend
+venv\Scripts\activate
+uvicorn main:app --reload
+
+# 웹에서 서버 확인
+localhost:8000/docs
+
+# 프론트엔드
+
+cd frontend
+npm run dev -- --host
+
+localhost:5173
+
+배포 사이트 없이 배포하기
+
+
+1
+cd C:\danggeun\backend
+venv\Scripts\activate
+uvicorn main:app --host 0.0.0.0
+
+2
+cd C:\danggeun\frontend
+npm run dev -- --host

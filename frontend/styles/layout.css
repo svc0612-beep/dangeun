@@ -1,0 +1,85 @@
+/* 상단바와 하단 탭바 */
+
+
+/* --- 상단바 --- */
+/* flex-wrap 덕분에 검색바가 폰에서는 아랫줄로 내려감 */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.topbar__brand  { display: none; }   /* 폰에선 숨김 */
+.topbar__nav    { display: none; }
+.topbar__region { font-size: 18px; font-weight: 600; flex: 1; }
+.topbar__title  { font-size: 18px; font-weight: 600; flex: 1; }
+.topbar__user   { font-size: 12px; color: var(--gray2); }
+.topbar__logout { font-size: 12px; color: var(--gray3); cursor: pointer; }
+
+/* --- 하단 탭바 (폰 전용) --- */
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  /* 아이폰 홈 인디케이터에 안 가리게 */
+  padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+}
+/* 아이콘과 글자를 세로로 쌓음 */
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--gray3);
+  cursor: pointer;
+}
+.tab--on { color: var(--orange); font-weight: 600; }
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   CSS는 나중에 나온 규칙이 이기므로 이 블록은 파일 맨 끝에 있어야 함
+   =============================================================== */
+@media (min-width: 768px) {
+
+
+  /* 상단바에 로고·검색·메뉴가 나타남 */
+  .topbar { padding: 14px 24px; gap: 16px; }
+
+  .topbar__brand {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--orange);
+    cursor: pointer;           /* 누르면 홈으로 */
+  }
+
+  .topbar__region { flex: none; font-size: 15px; font-weight: 500; }
+
+  .topbar__search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 9px 14px;
+    background: #F5F5F5;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--gray3);
+  }
+
+  .topbar__nav { display: flex; gap: 18px; }
+
+  .topbar__nav span { font-size: 13px; color: var(--gray2); cursor: pointer; }
+
+
+  /* 하단 탭바는 숨김 — 웹에선 어색함 */
+  .tabbar { display: none; }
+}

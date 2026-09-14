@@ -1,0 +1,31 @@
+/* 기본 뼈대 — 색·글꼴·화면 바깥 틀 */
+
+
+/* --- 화면 바깥 틀 --- */
+.page {
+  max-width: 460px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #fff;
+}
+.page--list   { padding-bottom: 74px; }  /* 하단 탭바에 안 가리게 */
+.page--detail { padding-bottom: 90px; }
+.page--auth   { padding: 24px; }
+.page--my     { padding-bottom: 74px; }
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   CSS는 나중에 나온 규칙이 이기므로 이 블록은 파일 맨 끝에 있어야 함
+   =============================================================== */
+@media (min-width: 768px) {
+
+
+  .page--list   { max-width: 1100px; padding-bottom: 40px; }
+
+  .page--detail { max-width: 720px; padding-bottom: 40px; }
+
+  .page--my     { max-width: 720px; padding-bottom: 40px; }
+
+  .page--chat   { max-width: 720px; }
+}

@@ -1,0 +1,551 @@
+/* 마이페이지 · 후기 · 공개 프로필 */
+
+
+/* --- 마이페이지 --- */
+.mytabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+}
+.mytab {
+  flex: 1;
+  padding: 14px 2px;
+  text-align: center;
+  font-size: 13px;          /* 탭이 5개라 조금 줄임 */
+  color: var(--gray3);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.mytab--on {
+  color: var(--gray1);
+  font-weight: 600;
+  border-bottom: 2px solid var(--green);
+}
+
+.info-box { padding: 16px; }
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.info-label { color: var(--gray3); flex-shrink: 0; }
+.info-value { text-align: right; word-break: break-word; }
+
+.section-title {
+  margin: 28px 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* 탈퇴 같은 위험한 동작 구역 */
+.danger-zone {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.danger-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #D33;
+}
+.btn-danger-full {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #D33;
+  background: #fff;
+  border: 1px solid #D33;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 판매내역 카드 아래 붙는 상태 변경 + 끌올 줄 */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 14px;
+}
+.select-sm {
+  padding: 7px 10px;
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: none;
+}
+/* 끌올 버튼 옆 남은 시간 안내 */
+.cooldown-text {
+  font-size: 12px;
+  color: var(--gray3);
+}
+
+.badge {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #F5F5F5;
+  color: var(--gray2);
+}
+.badge--done { background: #FFF0E6; color: var(--orange); }
+
+/* --- 후기 작성 --- */
+/* 별을 크게 — 폰에서 손가락으로 누를 수 있어야 함 */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 20px 0 8px;
+}
+.star {
+  color: #DDD;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.star--on { color: #FFB020; }
+
+.star-label {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray1);
+}
+
+/* 태그는 좁은 화면에서 줄바꿈되게 */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag-pick {
+  padding: 9px 13px;
+  font-size: 13px;
+  color: var(--gray2);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.tag-pick--on {
+  color: var(--green-dark);
+  background: var(--green-soft);
+  border-color: var(--green);
+}
+
+/* --- 받은 후기 요약 --- */
+.review-box {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.review-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFB020;
+}
+.review-item { margin-bottom: 12px; }
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #FFB020;
+  letter-spacing: 1px;
+}
+.review-writer { font-size: 12px; color: var(--gray3); letter-spacing: 0; }
+.review-comment {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--gray2);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* --- 공개 프로필 --- */
+.prof-head {
+  padding: 22px 16px 18px;
+  border-bottom: 8px solid #F7F7F8;
+  text-align: center;
+}
+.prof-name   { margin: 0; font-size: 20px; font-weight: 700; }
+.prof-region { margin: 4px 0 18px; font-size: 13px; color: var(--gray3); }
+
+/* 숫자 네 개를 나란히. 좁으면 줄바꿈 */
+.prof-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.prof-stat {
+  flex: 1;
+  min-width: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 4px;
+  background: #F7F7F8;
+  border-radius: 10px;
+}
+.prof-num   { font-size: 16px; font-weight: 700; }
+.prof-label { font-size: 11px; color: var(--gray3); }
+
+.prof-block { padding: 20px 16px; border-bottom: 8px solid #F7F7F8; }
+.prof-title { margin: 0 0 14px; font-size: 16px; font-weight: 700; }
+.prof-empty { margin: 0; font-size: 13px; color: var(--gray3); }
+
+/* 별점 요약 + 분포 막대 */
+.rate-summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.rate-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 96px;
+}
+.rate-num   { font-size: 32px; font-weight: 700; line-height: 1.1; }
+.rate-stars { font-size: 15px; color: #FFB020; letter-spacing: 1px; }
+
+.rate-bars { flex: 1; min-width: 170px; }
+.rate-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.rate-bar-label { width: 24px; font-size: 11px; color: var(--gray3); }
+.rate-bar {
+  flex: 1;
+  height: 7px;
+  background: #F0F0F1;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.rate-bar-fill { height: 100%; background: #FFB020; }
+.rate-bar-count { width: 16px; font-size: 11px; color: var(--gray3); text-align: right; }
+
+/* 많이 받은 태그 */
+.tag-count {
+  padding: 6px 11px;
+  font-size: 12px;
+  color: var(--gray2);
+  background: #F4F4F5;
+  border-radius: 999px;
+}
+.tag-count b { color: var(--orange); margin-left: 2px; }
+
+/* 후기 목록 */
+.review-list { margin-top: 18px; }
+.review-card {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.review-card__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 8px;
+}
+.review-card__stars { font-size: 14px; color: #FFB020; letter-spacing: 1px; }
+.review-card__label { font-size: 13px; font-weight: 600; }
+.review-card__who   { margin-left: auto; font-size: 12px; color: var(--gray3); }
+.review-card__text {
+  margin: 8px 0 0;
+  font-size: 13.5px;
+  color: var(--gray2);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* 판매 중인 물건 */
+.prof-sell {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.prof-sell-item { cursor: pointer; }
+.prof-sell-thumb {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  background: #F4F4F5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.prof-sell-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.prof-sell-title {
+  margin: 0; font-size: 12px; color: var(--gray2);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.prof-sell-price { margin: 2px 0 0; font-size: 13px; font-weight: 700; }
+
+/* 상세에서 프로필로 들어가는 줄 */
+.seller-top--link { cursor: pointer; }
+.seller-more {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--orange);
+  cursor: pointer;
+}
+.chat-head__link { cursor: pointer; text-decoration: underline; }
+
+/* --- 거래 확정 안내창 --- */
+/* 화면 전체를 덮는 어두운 배경 */
+.modal-back {
+  position: fixed;
+  inset: 0;                    /* top/right/bottom/left 를 한 번에 0으로 */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+}
+.modal {
+  width: 100%;
+  max-width: 360px;
+  padding: 24px 20px;
+  background: #fff;
+  border-radius: 16px;
+  text-align: center;
+}
+.modal-title { margin: 0 0 6px; font-size: 19px; font-weight: 700; }
+.modal-sub   { margin: 0 0 18px; font-size: 13px; color: var(--gray3); }
+.modal-guide {
+  margin: 0 0 16px;
+  font-size: 12.5px;
+  color: var(--gray3);
+  line-height: 1.6;
+}
+
+.modal-card {
+  padding: 14px;
+  margin-bottom: 18px;
+  background: #FFF8F3;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.modal-who {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.modal-region { margin-left: 7px; font-size: 12px; font-weight: 400; color: var(--gray3); }
+.modal-more { margin: 12px 0 0; font-size: 11px; color: var(--orange); }
+
+/* --- 홈 상단: 후기 대기 배너 --- */
+.pending-bar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 12px 16px 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #A66200;
+  background: #FFF7E6;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.pending-bar svg { flex-shrink: 0; color: #FFB020; }
+/* 가운데 글이 길면 … 으로 자름 */
+.pending-bar span:nth-of-type(1) {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pending-bar b {
+  margin-left: 7px;
+  font-weight: 500;
+  color: var(--gray2);
+}
+.pending-go { flex-shrink: 0; font-weight: 600; }
+
+/* --- 마이페이지: 거래 내역 --- */
+.deal-list { padding: 16px; }
+.deal-card {
+  padding: 14px;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.deal-top { display: flex; gap: 12px; }
+.deal-thumb {
+  width: 68px; height: 68px; flex-shrink: 0;
+  border-radius: 10px; background: #F4F4F5; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.deal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.deal-info { flex: 1; min-width: 0; }
+
+.deal-role { display: flex; align-items: center; gap: 8px; margin: 0 0 5px; }
+.role {
+  padding: 2px 8px;
+  font-size: 11px; font-weight: 600;
+  border-radius: 999px;
+}
+.role--buy  { background: #E9F3FF; color: #1A6FD4; }
+.role--sell { background: #FFF0E6; color: var(--orange); }
+.deal-when  { font-size: 11px; color: var(--gray3); }
+
+.deal-title {
+  margin: 0; font-size: 14px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.deal-price   { margin: 3px 0 0; font-size: 14px; font-weight: 700; }
+.deal-partner {
+  margin: 6px 0 0; font-size: 12px; color: var(--green); cursor: pointer;
+}
+
+.deal-review {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.deal-review__head {
+  margin: 0 0 7px;
+  font-size: 12px; font-weight: 600; color: var(--gray2);
+}
+.deal-none { margin: 0; font-size: 12.5px; color: var(--gray3); line-height: 1.6; }
+.deal-none b { color: var(--orange); }
+
+/* --- 마이페이지: 받은 후기 --- */
+.myrev-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 18px 0 16px;
+  background: #F7F7F8;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+/* 후기를 안 남긴 거래 목록 — 누구·무슨 물건인지 바로 보이게 */
+.pending-box {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #FFF7E6;
+  border-radius: 10px;
+}
+.pending-box__head {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #A66200;
+}
+.pending-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #F2E3C6;
+}
+.pending-item__body { flex: 1; min-width: 0; }
+.pending-item__who  { margin: 0; font-size: 13.5px; font-weight: 600; }
+.pending-item__post {
+  margin: 3px 0 0; font-size: 12px; color: var(--gray3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.pending-box__note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #A66200;
+  line-height: 1.5;
+}
+
+.myrev-hidden {
+  cursor: pointer;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  color: #A66200;
+  background: #FFF7E6;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+/* 받은 것 / 쓴 것 전환 */
+.side-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.side {
+  flex: 1;
+  padding: 9px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--gray3);
+  background: #F7F7F8;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.side--on { color: #fff; background: var(--green); font-weight: 600; }
+
+.review-card__post {
+  margin: 0 0 7px;
+  font-size: 12px;
+  color: var(--gray3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.place-hits {
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.place-hit {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.place-hit:last-child { border-bottom: none; }
+.place-hit:hover { background: #F7F7F8; }
+.place-hit__name { margin: 0; font-size: 13.5px; }
+.place-hit__addr { margin: 3px 0 0; font-size: 12px; color: var(--gray3); }
+
+.place-picked {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--gray1);
+}
+.place-picked .link { margin-left: auto; font-size: 12px; }
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   CSS는 나중에 나온 규칙이 이기므로 이 블록은 파일 맨 끝에 있어야 함
+   =============================================================== */
+@media (min-width: 768px) {
+
+  .stars { gap: 10px; }
+
+  .mytab { font-size: 14px; }
+
+  .prof-sell { grid-template-columns: repeat(4, 1fr); }
+}

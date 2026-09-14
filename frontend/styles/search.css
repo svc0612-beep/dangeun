@@ -1,0 +1,254 @@
+/* 검색 · 필터 칩 · 인기 검색어 */
+
+
+/* --- 검색 --- */
+/* order:10 = 맨 뒤로, flex-basis:100% = 폰에선 한 줄 전체 차지 */
+.search-wrap {
+  order: 10;
+  flex-basis: 100%;
+  position: relative;        /* 추천창을 바로 아래 붙이려고 */
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #F4F4F5;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--gray3);
+}
+/* 입력 중이면 테두리에 색이 들어옴 */
+.search-box:focus-within {
+  background: #fff;
+  border-color: var(--orange);
+}
+.search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: var(--gray1);
+}
+.search-x { cursor: pointer; flex-shrink: 0; }
+
+/* 추천 / 최근 검색어 창 */
+.suggest-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  z-index: 20;               /* 카드 위에 떠야 함 */
+  padding: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.suggest-label {
+  margin: 4px 10px 6px;
+  font-size: 11px;
+  color: var(--gray3);
+}
+.suggest-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  font-size: 14px;
+  color: var(--gray1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.suggest-item:hover { background: #F7F7F8; }
+
+/* --- 카테고리 칩 줄 --- */
+.cat-row {
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px 0;
+  overflow-x: auto;          /* 좁으면 옆으로 밀어서 봄 */
+}
+.cat-chip {
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--gray2);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.cat-chip--on {
+  color: #fff;
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+/* --- 지금 걸린 조건 칩 --- */
+.active-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px 0;
+}
+.chip-on {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  font-size: 12px;
+  color: #B24800;
+  background: #FFF0E6;
+  border-radius: 999px;
+}
+.chip-on svg { cursor: pointer; }
+.filter-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--gray3);
+}
+
+/* --- 결과 없음 --- */
+.empty-box {
+  grid-column: 1 / -1;       /* 그리드 전체 폭 차지 */
+  padding: 40px 16px;
+  text-align: center;
+}
+.empty-title { margin: 0 0 6px; font-size: 15px; }
+.empty-sub {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--gray2);
+}
+.empty-sub .link { margin: 0 4px; color: var(--orange); }
+
+/* 지역 필터 드롭다운 (상단바) */
+.select-region {
+  padding: 7px 10px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+}
+
+/* --- 인기 검색어 --- */
+.rank-box {
+  margin: 12px 16px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.rank-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px;
+  background: #FFF8F3;
+  cursor: pointer;
+}
+.rank-head svg { color: var(--orange); flex-shrink: 0; }
+.rank-title  { font-size: 14px; font-weight: 600; }
+.rank-period { font-size: 11px; color: var(--gray3); }
+.rank-toggle { margin-left: auto; font-size: 12px; color: var(--gray3); }
+
+/* 폰에서는 한 줄, 넓은 화면에서는 두 줄로 나눔 */
+.rank-cols { display: flex; flex-direction: column; padding: 6px 0; }
+.rank-col  { flex: 1; }
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.rank-item:hover { background: #FAFAFA; }
+
+.rank-no {
+  width: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray3);
+  text-align: center;
+  flex-shrink: 0;
+}
+.rank-no--top { color: var(--orange); }
+
+.rank-word {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 오르내림 표시 */
+.rank-up, .rank-down {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.rank-up   { color: #D64545; }   /* 상승은 빨강 */
+.rank-down { color: #3B7DD8; }   /* 하락은 파랑 */
+.rank-same { font-size: 11px; color: var(--gray3); }
+.rank-new {
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--orange);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* --- 이런 매물은 어때요 (의미 검색) --- */
+.similar-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0 0;
+  padding: 20px 16px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-top: 8px solid #F7F7F8;
+}
+.similar-head span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray3);
+}
+
+
+/* ===============================================================
+   화면이 768px보다 넓을 때 = 웹 레이아웃
+   CSS는 나중에 나온 규칙이 이기므로 이 블록은 파일 맨 끝에 있어야 함
+   =============================================================== */
+@media (min-width: 768px) {
+
+  .similar-head { padding: 24px 24px 0; }
+
+
+  /* 넓은 화면에선 검색바를 상단바 안으로 되돌림 */
+  .search-wrap {
+    order: 0;
+    flex-basis: auto;
+    flex: 1;
+  }
+
+  .cat-row      { padding: 16px 24px 0; }
+
+  .active-chips { padding: 14px 24px 0; }
+
+
+  /* 안내 문구는 그리드 칸 하나가 아니라 전체 폭을 쓰게 */
+  .notice { grid-column: 1 / -1; }
+}
